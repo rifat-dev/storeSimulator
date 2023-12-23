@@ -1,5 +1,7 @@
 package com.rifat.storeSimulator.model;
 
-public class UserRole {
-    
+public enum UserRole {
+    Admin,
+    Employee,
+    Customer
 }
