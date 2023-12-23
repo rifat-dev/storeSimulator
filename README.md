@@ -1,4 +1,5 @@
 # Симулятор магазина 🏪
+Ещё не сделано
 <p>
     <strong>ООП ЛАБОРАТОРНАЯ РАБОТА №3</strong> <br>
     ...
@@ -38,13 +39,29 @@ Open browser and go to http://localhost:8080
 │   │               ├── StoreSimulatorApplication.java
 │   │               ├── config
 │   │               ├── controller
+│   │               │   ├── ProductController.java
+│   │               │   ├── StoreController.java
+│   │               │   └── UserController.java
 │   │               ├── model
+│   │               │   ├── Product.java
+│   │               │   ├── ProductStore.java
+│   │               │   ├── Store.java
+│   │               │   ├── User.java
+│   │               │   └── UserRole.java
 │   │               ├── repository
+│   │               │   ├── ProductRepository.java
+│   │               │   ├── ProductStoreRepository.java
+│   │               │   ├── StoreRepository.java
+│   │               │   └── UserRepository.java
 │   │               └── service
+│   │                   ├── ProductService.java
+│   │                   ├── StoreService.java
+│   │                   └── UserService.java
 │   └── resources
 │       ├── application.properties
 │       ├── static
 │       └── templates
+│           └── hello.html
 └── test
     └── java
         └── com
