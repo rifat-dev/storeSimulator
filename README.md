@@ -36,6 +36,10 @@ Open browser and go to http://localhost:8080
 │   │   └── com
 │   │       └── rifat
 │   │           └── storeSimulator
+│   │               ├── DTO
+│   │               │   ├── AvailableQuantityProductsInStoreDTO.java
+│   │               │   ├── CartPurchaseDTO.java
+│   │               │   └── PurchaseItemDTO.java
 │   │               ├── StoreSimulatorApplication.java
 │   │               ├── config
 │   │               ├── controller
