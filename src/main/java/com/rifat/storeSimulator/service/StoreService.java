@@ -36,7 +36,6 @@ public class StoreService {
         Optional<Store> optCurStore = this.storeRepository.findByName(storeName);
         Optional<Product> optCurProduct = this.productService.getProductByName(productName);
         if (optCurStore.isEmpty() || optCurProduct.isEmpty()) {
-            // NB! подумать над искл.
             return null;
         }
 
@@ -50,7 +49,7 @@ public class StoreService {
             int curQuantity = curProductStore.getQuantity();
 
             if (diffQuantity + curQuantity < 0) {
-                // NB! ИСКЛ, что то написать, типо кол-во меньше, чем хочешь убавить
+                return null;
             } else {
                 curProductStore.setQuantity(diffQuantity + curQuantity);
             }
@@ -64,7 +63,6 @@ public class StoreService {
         Optional<Store> optCurStore = this.storeRepository.findByName(storeName);
         Optional<Product> optCurProduct = this.productService.getProductByName(productName);
         if (optCurStore.isEmpty() || optCurProduct.isEmpty()) {
-            // NB! подумать над искл.
             return null;
         }
 
@@ -78,7 +76,6 @@ public class StoreService {
             double curPrice = curProductStore.getPrice();
 
             if (diffPrice + curPrice < 0) {
-                // NB! ИСКЛ, что то написать, типо кол-во меньше, чем хочешь убавить
                 return null;
             } else {
                 curProductStore.setPrice(diffPrice + curPrice);
@@ -92,7 +89,6 @@ public class StoreService {
     public Optional<ProductStore> findStoreWithCheapestProduct(String productName) {
         Optional<Product> optCurProduct = this.productService.getProductByName(productName);
         if (optCurProduct.isEmpty()) {
-            // NB! подумать над искл.
             return null;
         }
 
@@ -104,7 +100,6 @@ public class StoreService {
     public List<AvailableQuantityProductsInStoreDTO> findQuantityProductsStoreMoney(String storeName, double amount) {
         Optional<Store> optCurStore = this.storeRepository.findByName(storeName);
         if (optCurStore.isEmpty()) {
-            // NB! подумать над искл.
             return null;
         }
 
@@ -146,7 +141,6 @@ public class StoreService {
         Optional<Store> optCurStore = this.storeRepository.findByName(curStoreName);
 
         if (optCurStore.isEmpty()) {
-            // NB! подумать над искл.
             return 0.0;
         }
         
