@@ -11,6 +11,10 @@ public class CartForComparisonDTO {
     
     private List<PurchaseItemDTO> itemsToBuy;
 
+
+    public CartForComparisonDTO() {
+    }
+
     public CartForComparisonDTO(List<PurchaseItemDTO> itemsToBuy) {
         this.itemsToBuy = itemsToBuy;
     }
