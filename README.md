@@ -6,7 +6,7 @@
     <strong>java 17, spring boot 3.2.0</strong> и <strong>Spring Data JPA</strong>.
 </p>
 
-## Установка и запуск
+## Установка и запуск (Default)
 
 ```bash
 # Step 1: Clone the repository
