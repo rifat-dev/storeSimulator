@@ -40,6 +40,7 @@ Open browser and go to http://localhost:8080
 │   │               │   ├── AvailableQuantityProductsInStoreDTO.java
 │   │               │   ├── CartForComparisonDTO.java
 │   │               │   ├── CartPurchaseDTO.java
+│   │               │   ├── NewProductStoreDTO.java
 │   │               │   ├── NewUserDTO.java
 │   │               │   ├── PurchaseItemDTO.java
 │   │               │   ├── ResponseRegisteredUserDTO.java
