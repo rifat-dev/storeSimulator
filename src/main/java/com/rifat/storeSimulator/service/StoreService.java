@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.rifat.storeSimulator.DTO.AvailableQuantityProductsInStoreDTO;
 import com.rifat.storeSimulator.DTO.CartForComparisonDTO;
 import com.rifat.storeSimulator.DTO.CartPurchaseDTO;
+import com.rifat.storeSimulator.DTO.NewProductStoreDTO;
 import com.rifat.storeSimulator.DTO.PurchaseItemDTO;
 import com.rifat.storeSimulator.model.Product;
 import com.rifat.storeSimulator.model.ProductStore;
@@ -114,7 +115,7 @@ public class StoreService {
             if (maxQuantity > curItem.getQuantity()) {
                 AvailableQuantityProductsInStoreDTO curItemOfList = 
                     new AvailableQuantityProductsInStoreDTO(
-                        storeName, 
+                        curItem.getProduct().getName(), 
                         curItem.getQuantity(), 
                         curItem.getQuantity() * pricePerItem
                     );
@@ -122,7 +123,7 @@ public class StoreService {
             } else if (maxQuantity > 0) {
                 AvailableQuantityProductsInStoreDTO curItemOfList = 
                     new AvailableQuantityProductsInStoreDTO(
-                        storeName, 
+                        curItem.getProduct().getName(), 
                         maxQuantity, 
                         maxQuantity * pricePerItem
                     );
@@ -135,7 +136,7 @@ public class StoreService {
         return result;
     }
 
-    public double buyBatchOfProducts(CartPurchaseDTO cartPurchaseDTO, boolean changeQuantity) {
+    public double buyBatchOfProducts(CartPurchaseDTO cartPurchaseDTO) {
         double totalCost = 0.0;
         String curStoreName = cartPurchaseDTO.getStoreName();
         Optional<Store> optCurStore = this.storeRepository.findByName(curStoreName);
@@ -163,9 +164,7 @@ public class StoreService {
             if (curProductStore.getQuantity() < curQuantity) {
                 curQuantity = curProductStore.getQuantity();
             }
-            if (changeQuantity) {
-                this.changeProductQuantity(curStoreName, curProductName, -curQuantity);
-            }
+            this.changeProductQuantity(curStoreName, curProductName, -curQuantity);
             totalCost += curQuantity * curProductStore.getPrice();
         }
 
@@ -216,5 +215,34 @@ public class StoreService {
 
     public Store saveStore(Store store) {
         return storeRepository.save(store);
+    }
+
+    public ProductStore saveProductStore(NewProductStoreDTO newProductStoreDTO) {
+        String storeName = newProductStoreDTO.getStore();
+        String productName = newProductStoreDTO.getProduct();
+        double price = newProductStoreDTO.getPrice();
+        int quantity = newProductStoreDTO.getQuantity();
+
+        Optional<Store> optCurStore = this.storeRepository.findByName(storeName);
+        if (optCurStore.isEmpty()) {
+            return null;
+        }
+
+        Optional<Product> optCurProduct = this.productService.getProductByName(productName);
+        if (optCurProduct.isEmpty()) {
+            return null;
+        }
+
+        Store curStore = optCurStore.get();
+        Product curProduct = optCurProduct.get();
+
+        ProductStore productStore = new ProductStore();
+        productStore.setStore(curStore);
+        productStore.setProduct(curProduct);
+        System.out.println(price);
+        productStore.setPrice((double) price);
+        productStore.setQuantity((int) quantity);
+        
+        return productStoreRepository.save(productStore);
     }
 }
