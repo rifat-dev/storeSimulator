@@ -1,5 +1,5 @@
 # Симулятор магазина 🏪
-Ещё не сделано
+
 <p>
     <strong>ООП ЛАБОРАТОРНАЯ РАБОТА №3</strong> <br>
     ...
@@ -38,10 +38,15 @@ Open browser and go to http://localhost:8080
 │   │           └── storeSimulator
 │   │               ├── DTO
 │   │               │   ├── AvailableQuantityProductsInStoreDTO.java
+│   │               │   ├── CartForComparisonDTO.java
 │   │               │   ├── CartPurchaseDTO.java
-│   │               │   └── PurchaseItemDTO.java
+│   │               │   ├── NewUserDTO.java
+│   │               │   ├── PurchaseItemDTO.java
+│   │               │   ├── ResponseRegisteredUserDTO.java
+│   │               │   └── UserLoginDTO.java
 │   │               ├── StoreSimulatorApplication.java
 │   │               ├── config
+│   │               │   └── SecurityConfig.java
 │   │               ├── controller
 │   │               │   ├── ProductController.java
 │   │               │   ├── StoreController.java
